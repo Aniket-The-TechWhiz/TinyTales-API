@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -93,5 +94,21 @@ public class StoryService {
 
         Story saved = storyRepository.save(story);
         return new StoryResponse(saved.getId(), saved.getCategory().getId(), saved.getTitle(), saved.getTime(), saved.getContent());
+    }
+
+
+    public List<StoryResponse> getStoriesByCategoryId(Long categoryId) {
+
+        List<Story> stories = storyRepository.findByCategoryId(categoryId);
+
+        return stories.stream()
+                .map(s -> new StoryResponse(
+                        s.getId(),
+                        s.getCategory().getId(),
+                        s.getTitle(),
+                        s.getTime(),
+                        s.getContent()
+                ))
+                .toList();
     }
 }

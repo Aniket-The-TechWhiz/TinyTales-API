@@ -44,4 +44,9 @@ public class StoryController {
     public ResponseEntity<StoryResponse> updateStory(@PathVariable("id") Long id, @RequestBody StoryRequest request) {
         return ResponseEntity.ok(storyService.updateStory(id, request));
     }
+
+    @GetMapping("/{categoryId}")
+    public ResponseEntity<List<StoryResponse>> getStoriesByCategoryId(@PathVariable("categoryId") Long categoryId){
+        return ResponseEntity.ok(storyService.getStoriesByCategoryId(categoryId));
+    }
 }
