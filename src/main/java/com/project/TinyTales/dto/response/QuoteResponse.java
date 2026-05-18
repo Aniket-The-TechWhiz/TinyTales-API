@@ -1,5 +1,6 @@
 package com.project.TinyTales.dto.response;
 
+import com.project.TinyTales.model.QuoteTag;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DashboardResponse {
-    private Long categoryCount;
-    private Long storiesCount;
-    //private Long readersCount;
-    private QuoteResponse dailyQuote;
+public class QuoteResponse {
+
+    private String content;
+
+    private String author;
+
+    private QuoteTag tag;
 }
