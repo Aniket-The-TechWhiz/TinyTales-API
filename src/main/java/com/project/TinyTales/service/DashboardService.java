@@ -15,7 +15,6 @@ public class DashboardService {
 
     private final CategoryRepository categoryRepository;
 
-    // ADD THIS
     private final QuoteService quoteService;
 
     public DashboardResponse getDashboardData() {

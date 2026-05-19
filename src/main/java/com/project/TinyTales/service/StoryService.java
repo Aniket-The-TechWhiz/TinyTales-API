@@ -111,4 +111,22 @@ public class StoryService {
                 ))
                 .toList();
     }
+
+    //search function
+    public List<StoryResponse> searchStories(String keyword) {
+        List<Story> stories = storyRepository.findByTitleContainingIgnoreCaseOrContentContainingIgnoreCase(keyword, keyword);
+
+        return stories.stream()
+                .map(s -> {
+                    StoryResponse response = new StoryResponse();
+                    response.setId(s.getId());
+                    // Safe check in case a story has no category assigned
+                    response.setCategoryId(s.getCategory() != null ? s.getCategory().getId() : null);
+                    response.setTitle(s.getTitle());
+                    response.setTime(s.getTime());
+                    response.setContent(s.getContent());
+                    return response;
+                })
+                .toList();
+    }
 }

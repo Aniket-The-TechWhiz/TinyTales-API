@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface StoryRepository extends JpaRepository<Story, Long> {
     List<Story> findByCategoryId(Long categoryId);
+    List<Story> findByTitleContainingIgnoreCaseOrContentContainingIgnoreCase(String title, String content);
 
 }
